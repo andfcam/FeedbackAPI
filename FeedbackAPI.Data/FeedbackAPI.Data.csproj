@@ -45,6 +45,8 @@
     <Compile Include="Models\Request.cs" />
     <Compile Include="Models\StatusType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IRequestData.cs" />
+    <Compile Include="Services\RequestData.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
