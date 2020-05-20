@@ -7,8 +7,15 @@ using FeedbackAPI.Data.Models;
 
 namespace FeedbackAPI.Data.Services
 {
-    class RequestData : IRequestData
+    public class RequestData : IRequestData
     {
+        private readonly FeedbackAPIDbContext _database;
+
+        public RequestData(FeedbackAPIDbContext database)
+        {
+            _database = database;
+        }
+
         public IEnumerable<Request> GetAll()
         {
             throw new NotImplementedException();
