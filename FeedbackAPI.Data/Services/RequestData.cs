@@ -18,7 +18,7 @@ namespace FeedbackAPI.Data.Services
 
         public IEnumerable<Request> GetAll()
         {
-            throw new NotImplementedException();
+            return _database.Requests;
         }
 
         public Request Get(int id)

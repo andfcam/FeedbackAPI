@@ -19,7 +19,7 @@ namespace FeedbackAPI.Web
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
             builder.RegisterApiControllers(typeof(MvcApplication).Assembly);
             builder.RegisterType<RequestData>()
-                .As<RequestData>()
+                .As<IRequestData>()
                 .InstancePerRequest();
             builder.RegisterType<FeedbackAPIDbContext>().InstancePerRequest();
 
