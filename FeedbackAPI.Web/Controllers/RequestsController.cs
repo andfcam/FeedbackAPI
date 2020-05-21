@@ -21,5 +21,11 @@ namespace FeedbackAPI.Web.Controllers
             var model = _database.GetAll();
             return View(model);
         }
+
+        public ActionResult Details(int id)
+        {
+            var model = _database.Get(id);
+            return View(model);
+        }
     }
 }

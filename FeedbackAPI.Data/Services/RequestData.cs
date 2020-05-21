@@ -23,7 +23,7 @@ namespace FeedbackAPI.Data.Services
 
         public Request Get(int id)
         {
-            throw new NotImplementedException();
+            return _database.Requests.FirstOrDefault(request => request.Id == id);
         }
 
         public void Accept(int id)
