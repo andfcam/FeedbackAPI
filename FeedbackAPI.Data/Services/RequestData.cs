@@ -42,5 +42,11 @@ namespace FeedbackAPI.Data.Services
             _database.Entry(request).State = EntityState.Modified;
             _database.SaveChanges();
         }
+
+        public void Add(Request request)
+        {
+            _database.Requests.Add(request);
+            _database.SaveChanges();
+        }
     }
 }

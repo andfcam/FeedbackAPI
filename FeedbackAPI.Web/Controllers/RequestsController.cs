@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using FeedbackAPI.Data.Models;
 using FeedbackAPI.Data.Services;
-using Newtonsoft.Json;
+using FeedbackAPI.Web.Services;
 
 namespace FeedbackAPI.Web.Controllers
 {
@@ -24,11 +26,19 @@ namespace FeedbackAPI.Web.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index(FormCollection form)
+        {
+            var request = CreateRequest();
+            _database.Add(request);
+            return RedirectToAction("Index");
+        }
+
         [HttpGet]
         public ActionResult Details(int id)
         {
             var model = _database.Get(id);
-            var testJson = JsonConvert.DeserializeObject<dynamic>(model.Data);
             return model != null ? View(model) : View("NotFound");
         }
 
@@ -60,6 +70,31 @@ namespace FeedbackAPI.Web.Controllers
         {
             _database.Reject(id);
             return RedirectToAction("Index");
+        }
+
+        private string ReadFromFile(string path)
+        {
+            using (var streamReader = new StreamReader(Server.MapPath(path)))
+            {
+                return streamReader.ReadToEnd();
+            }
+        }
+
+        private Request CreateRequest()
+        {
+            var plainText = ReadFromFile("~/App_Data/sample.json");
+            var jsonObject = new JsonRequestData(plainText);
+
+            return new Request
+            {
+                RequesterId = jsonObject.RequesterId,
+                Action = jsonObject.Action,
+                SiteId = jsonObject.SiteId,
+                Date = DateTime.Now,
+                Status = StatusType.Requested,
+                Data = plainText
+            };
+
         }
     }
 }

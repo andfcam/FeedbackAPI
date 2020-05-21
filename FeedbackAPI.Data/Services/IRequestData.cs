@@ -16,5 +16,7 @@ namespace FeedbackAPI.Data.Services
         void Accept(int id);
 
         void Reject(int id);
+
+        void Add(Request request);
     }
 }
