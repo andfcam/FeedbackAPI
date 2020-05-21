@@ -37,5 +37,12 @@ namespace FeedbackAPI.Web.Controllers
             return model != null ? View(model) : View("NotFound");
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Accept(int id, FormCollection form)
+        {
+            _database.Accept(id);
+            return RedirectToAction("Index");
+        }
     }
 }

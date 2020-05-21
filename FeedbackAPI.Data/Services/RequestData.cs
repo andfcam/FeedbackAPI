@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,12 +24,15 @@ namespace FeedbackAPI.Data.Services
 
         public Request Get(int id)
         {
-            return _database.Requests.FirstOrDefault(request => request.Id == id);
+            return _database.Requests.Find(id);
         }
 
         public void Accept(int id)
         {
-            throw new NotImplementedException();
+            var request = Get(id);
+            request.Status = StatusType.Accepted;
+            _database.Entry(request).State = EntityState.Modified;
+            _database.SaveChanges();
         }
 
         public void Reject(int id)
