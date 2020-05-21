@@ -14,9 +14,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Data)
+            <pre>@Model.Data</pre>
         </dd>
-
     </dl>
 
     @using (Html.BeginForm())
@@ -24,7 +23,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Reject" class="btn btn-default" /> |
+            <input type="submit" value="Delete" class="btn btn-default" /> |
             @Html.ActionLink("Back to List", "Index")
         </div>
     }

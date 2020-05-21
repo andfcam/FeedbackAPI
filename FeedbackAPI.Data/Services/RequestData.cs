@@ -37,7 +37,10 @@ namespace FeedbackAPI.Data.Services
 
         public void Reject(int id)
         {
-            throw new NotImplementedException();
+            var request = Get(id);
+            request.Status = StatusType.Rejected;
+            _database.Entry(request).State = EntityState.Modified;
+            _database.SaveChanges();
         }
     }
 }
