@@ -15,17 +15,27 @@ namespace FeedbackAPI.Web.Controllers
         {
             _database = database;
         }
-        // GET: Requests
+        
+        [HttpGet]
         public ActionResult Index()
         {
             var model = _database.GetAll();
             return View(model);
         }
 
+        [HttpGet]
         public ActionResult Details(int id)
         {
             var model = _database.Get(id);
             return model != null ? View(model) : View("NotFound");
         }
+
+        [HttpGet]
+        public ActionResult Accept(int id)
+        {
+            var model = _database.Get(id);
+            return model != null ? View(model) : View("NotFound");
+        }
+
     }
 }

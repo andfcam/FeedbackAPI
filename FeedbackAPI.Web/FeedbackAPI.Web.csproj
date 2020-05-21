@@ -204,6 +204,7 @@
     <Content Include="Views\Requests\Index.cshtml" />
     <Content Include="Views\Requests\Details.cshtml" />
     <Content Include="Views\Requests\NotFound.cshtml" />
+    <Content Include="Views\Requests\Accept.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
