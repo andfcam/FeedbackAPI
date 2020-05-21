@@ -13,10 +13,8 @@ namespace FeedbackAPI.Data.Services
 
         Request Get(int id);
 
-        void Add(Request request);
+        void Accept(int id);
 
-        void Update(Request request);
-
-        void Delete(int id);
+        void Reject(int id);
     }
 }

@@ -26,17 +26,12 @@ namespace FeedbackAPI.Data.Services
             throw new NotImplementedException();
         }
 
-        public void Add(Request request)
+        public void Accept(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Request request)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(int id)
+        public void Reject(int id)
         {
             throw new NotImplementedException();
         }

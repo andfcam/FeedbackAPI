@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +16,7 @@ namespace FeedbackAPI.Data.Models
 
         public ActionType Action { get; set; }
 
+        [DisplayName("Site")]
         public int SiteId { get; set; }
 
         public DateTime Date { get; set; }
