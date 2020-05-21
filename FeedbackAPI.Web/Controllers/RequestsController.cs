@@ -44,5 +44,12 @@ namespace FeedbackAPI.Web.Controllers
             _database.Accept(id);
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public ActionResult Reject(int id)
+        {
+            var model = _database.Get(id);
+            return model != null ? View(model) : View("NotFound");
+        }
     }
 }
