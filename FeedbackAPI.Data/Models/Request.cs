@@ -12,6 +12,7 @@ namespace FeedbackAPI.Data.Models
     {
         public int Id { get; set; }
 
+        [DisplayName("Requested by")]
         public int RequesterId { get; set; }
 
         public ActionType Action { get; set; }

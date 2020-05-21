@@ -7,15 +7,15 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Request</h4>
+    <h4>@Model.Action Site @Model.SiteId</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.RequesterId)
+            @Html.DisplayNameFor(model => model.Status)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.RequesterId)
+            @Html.DisplayFor(model => model.Status)
         </dd>
 
         <dt>
@@ -25,6 +25,14 @@
         <dd>
             @Html.DisplayFor(model => model.SiteId)
         </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.RequesterId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RequesterId)
+        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Date)
@@ -32,6 +40,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.Date)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Action)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Action)
         </dd>
 
         <dt>
@@ -45,6 +61,7 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index") |
+    @Html.ActionLink("Accept", "Accept", new {id = Model.Id}) |
+    @Html.ActionLink("Reject", "Reject", new {id = Model.Id})
 </p>

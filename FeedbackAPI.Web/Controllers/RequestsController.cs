@@ -25,7 +25,7 @@ namespace FeedbackAPI.Web.Controllers
         public ActionResult Details(int id)
         {
             var model = _database.Get(id);
-            return View(model);
+            return model != null ? View(model) : View("NotFound");
         }
     }
 }
