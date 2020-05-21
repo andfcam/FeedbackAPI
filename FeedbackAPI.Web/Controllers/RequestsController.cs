@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using FeedbackAPI.Data.Services;
+using Newtonsoft.Json;
 
 namespace FeedbackAPI.Web.Controllers
 {
@@ -27,6 +28,7 @@ namespace FeedbackAPI.Web.Controllers
         public ActionResult Details(int id)
         {
             var model = _database.Get(id);
+            var testJson = JsonConvert.DeserializeObject<dynamic>(model.Data);
             return model != null ? View(model) : View("NotFound");
         }
 
