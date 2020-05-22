@@ -1,0 +1,148 @@
+{
+    "request": {
+        "requesterid": "12345",
+        "action": "create"
+    },
+    "site": {
+        "name": "NEW SUPER SITE",
+        "address": {
+            "subBuildingName": null,
+            "buildingName": null,
+            "buildingNumber": 0,
+            "dependentThoroughfare": null,
+            "thoroughfareName": "ROYAL PARADE",
+            "doubleDependentLocality": null,
+            "dependentLocality": null,
+            "postTown": "EASTBOURNE",
+            "postcode": "BN22 7LQ"
+        },
+        "contacts": {
+            "title": null,
+            "forename": null,
+            "surname": null,
+            "designation": null,
+            "email": "test@site1.com",
+            "telephone": null,
+            "website": null
+        },
+        "management": {
+            "managementType": 1,
+            "ownerType": 2,
+            "educationPhase": 3,
+            "startDate": null,
+            "closureDate": null,
+            "closureCode": null,
+            "closureNotes": null
+        },
+        "amenities": {
+            "hasCarPark": true,
+            "carParkCapacity": 25,
+            "dedicatedFootballFacility": false,
+            "cyclePark": true,
+            "cycleHire": false,
+            "cycleRepairWorkshop": false,
+            "nursery": false,
+            "firstAidRoom": true
+        },
+        "equipment": {
+            "tableTennisTables": "0",
+            "poolHoist": "0",
+            "bowlingMachine": "0",
+            "trampolines": "0",
+            "parallelBars": "0",
+            "highBars": "0",
+            "stillRings": "0",
+            "unevenBars": "0",
+            "balanceBeam": "0",
+            "vault": "0",
+            "pommelHorse": "0"
+        },
+        "disability": {
+            "access": true,
+            "equipped": {
+                "parking": true,
+                "findingReachingEntrance": false,
+                "receptionArea": false,
+                "doorways": false,
+                "changingFacilities": false,
+                "activityAreas": false,
+                "toilets": false,
+                "socialAreas": false,
+                "spectatorAreas": false,
+                "emergencyExits": false
+            },
+            "publicNotes": null,
+            "changingPlacesToiletsExist": 0
+        },
+        "activities": [{
+                "id": "66"
+            }, {
+                "id": "108"
+            }
+        ],
+        "aliases": [],
+        "facilities": [{
+                "type": {
+                    "facilityType": 5,
+                    "facilitySubType": 5002
+                },
+                "management": {
+                    "managementType": 1,
+                    "status": 3,
+                    "statusNotes": null,
+                    "closureDate": null,
+                    "closureCode": null,
+                    "closureReason": null,
+                    "closureNotes": null,
+                    "comments": []
+                },
+                "buildHistory": {
+                    "openingDate": null,
+                    "yearBuilt": null,
+                    "yearBuiltEstimated": false,
+                    "isRefurbished": true,
+                    "yearRefurbished": 2000,
+                    "hasChangingRooms": true,
+                    "areChangingRoomsRefurbished": true,
+                    "yearChangingRoomsRefurbished": 2000
+                },
+                "disability": {
+                    "access": true,
+                    "notes": null,
+                    "equipped": {
+                        "parking": true,
+                        "findingReachingEntrance": true,
+                        "receptionArea": true,
+                        "doorways": true,
+                        "changingFacilities": false,
+                        "activityAreas": true,
+                        "toilets": true,
+                        "socialAreas": false,
+                        "spectatorAreas": false,
+                        "emergencyExits": true
+                    },
+                    "changingPlacesToiletsExist": 0
+                },
+                "facilitySpecifics": {
+                    "floodlit": 0,
+                    "overmarked": 0,
+                    "pitches": 1
+                },
+                "openingTimes": {
+                    "seasonalityType": 1,
+                    "seasonalityStart": null,
+                    "seasonalityEnd": null,
+                    "timingsType": 2,
+                    "accessibility": 5,
+                    "openingTimes": [{
+                            "accessDescription": 5,
+                            "openingTime": "09:00",
+                            "closingTime": "16:00",
+                            "periodOpenFor": 11
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
