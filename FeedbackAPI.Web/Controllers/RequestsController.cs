@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using FeedbackAPI.Data.Models;
 using FeedbackAPI.Data.Services;
 using FeedbackAPI.Web.Models;
@@ -33,18 +31,7 @@ namespace FeedbackAPI.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateRequest()
         {
-            var plainText = ReadFromFile("~/App_Data/sample.json");
-            var jsonObject = new JsonRequestData(plainText);
-
-            var request = new Request
-            {
-                RequesterId = jsonObject.RequesterId,
-                Action = jsonObject.Action,
-                SiteId = jsonObject.SiteId,
-                Date = DateTime.Now,
-                Status = StatusType.Requested,
-                Data = plainText
-            };
+            var request = JsonRequestService.FetchRequest();
             _database.Add(request);
             return RedirectToAction("Index");
         }
@@ -86,14 +73,6 @@ namespace FeedbackAPI.Web.Controllers
         {
             _database.Reject(id);
             return RedirectToAction("Index");
-        }
-
-        private string ReadFromFile(string path)
-        {
-            using (var streamReader = new StreamReader(Server.MapPath(path)))
-            {
-                return streamReader.ReadToEnd();
-            }
         }
     }
 }
