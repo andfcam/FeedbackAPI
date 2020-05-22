@@ -2,16 +2,12 @@
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
 using FeedbackAPI.Data.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 
 namespace FeedbackAPI.Web
 {
-    public class ContainerConfig
+    public static class ContainerConfig
     {
         internal static void RegisterContainer(HttpConfiguration httpConfiguration)
         {
