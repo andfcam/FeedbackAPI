@@ -163,6 +163,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\FilteredStatusRequests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\JsonRequestData.cs" />
   </ItemGroup>
@@ -208,10 +209,11 @@
     <Content Include="Views\Requests\Accept.cshtml" />
     <Content Include="Views\Requests\Reject.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Requests\_RequestTable.cshtml" />
+    <Content Include="Views\Requests\_RequestedActionLinks.cshtml" />
+    <Content Include="Views\Requests\NotValid.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

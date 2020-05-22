@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using FeedbackAPI.Data.Models;
 using FeedbackAPI.Data.Services;
+using FeedbackAPI.Web.Models;
 using FeedbackAPI.Web.Services;
 
 namespace FeedbackAPI.Web.Controllers
@@ -18,11 +19,16 @@ namespace FeedbackAPI.Web.Controllers
         {
             _database = database;
         }
-        
+
         [HttpGet]
         public ActionResult Index()
         {
-            var model = _database.GetAll();
+            var model = new FilteredStatusRequests
+            {
+                Requested = _database.GetByStatus(StatusType.Requested),
+                Accepted = _database.GetByStatus(StatusType.Accepted),
+                Rejected = _database.GetByStatus(StatusType.Rejected)
+            };
             return View(model);
         }
 
@@ -46,7 +52,8 @@ namespace FeedbackAPI.Web.Controllers
         public ActionResult Accept(int id)
         {
             var model = _database.Get(id);
-            return model != null ? View(model) : View("NotFound");
+            if (model == null) return View("NotFound");
+            return model.Status != StatusType.Requested ? View("NotValid") : View(model);
         }
 
         [HttpPost]
@@ -61,7 +68,8 @@ namespace FeedbackAPI.Web.Controllers
         public ActionResult Reject(int id)
         {
             var model = _database.Get(id);
-            return model != null ? View(model) : View("NotFound");
+            if (model == null) return View("NotFound");
+            return model.Status != StatusType.Requested ? View("NotValid") : View(model);
         }
 
         [HttpPost]
@@ -94,7 +102,6 @@ namespace FeedbackAPI.Web.Controllers
                 Status = StatusType.Requested,
                 Data = plainText
             };
-
         }
     }
 }

@@ -11,6 +11,8 @@ namespace FeedbackAPI.Data.Services
     {
         IEnumerable<Request> GetAll();
 
+        IEnumerable<Request> GetByStatus(StatusType status);
+
         Request Get(int id);
 
         void Accept(int id);

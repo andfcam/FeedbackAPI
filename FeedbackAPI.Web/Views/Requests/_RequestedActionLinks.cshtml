@@ -1,0 +1,8 @@
+﻿@using FeedbackAPI.Data.Models
+@model FeedbackAPI.Data.Models.Request
+
+@if (Model.Status == StatusType.Requested) 
+{ 
+    @:| @Html.ActionLink("Accept", "Accept", new { id = Model.Id })
+    @:| @Html.ActionLink("Reject", "Reject", new { id = Model.Id })
+}
