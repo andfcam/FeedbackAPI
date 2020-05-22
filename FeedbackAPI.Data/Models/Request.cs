@@ -21,7 +21,7 @@ namespace FeedbackAPI.Data.Models
         public int SiteId { get; set; }
 
         [DisplayName("Received on")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy HH:mm}")]
         public DateTime Date { get; set; }
 
         public StatusType Status { get; set; }

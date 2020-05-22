@@ -22,6 +22,11 @@ namespace FeedbackAPI.Data.Services
             return _database.Requests;
         }
 
+        public IEnumerable<Request> GetByStatus(StatusType status)
+        {
+            return _database.Requests.Where(request => request.Status == status);
+        }
+
         public Request Get(int id)
         {
             return _database.Requests.Find(id);

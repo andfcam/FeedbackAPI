@@ -60,7 +60,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Back to List", "Index") |
-    @Html.ActionLink("Accept", "Accept", new {id = Model.Id}) |
-    @Html.ActionLink("Reject", "Reject", new {id = Model.Id})
+    @Html.ActionLink("Back to List", "Index")
+    @Html.Partial("_RequestedActionLinks", Model)
 </p>
