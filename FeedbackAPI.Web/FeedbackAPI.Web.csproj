@@ -211,6 +211,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Requests\_RequestTable.cshtml" />
     <Content Include="Views\Requests\_RequestedActionLinks.cshtml" />
+    <Content Include="Views\Requests\NotValid.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

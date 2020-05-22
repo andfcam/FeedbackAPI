@@ -19,7 +19,7 @@ namespace FeedbackAPI.Web.Controllers
         {
             _database = database;
         }
-        
+
         [HttpGet]
         public ActionResult Index()
         {
@@ -52,7 +52,8 @@ namespace FeedbackAPI.Web.Controllers
         public ActionResult Accept(int id)
         {
             var model = _database.Get(id);
-            return model != null ? View(model) : View("NotFound");
+            if (model == null) return View("NotFound");
+            return model.Status != StatusType.Requested ? View("NotValid") : View(model);
         }
 
         [HttpPost]
@@ -67,7 +68,8 @@ namespace FeedbackAPI.Web.Controllers
         public ActionResult Reject(int id)
         {
             var model = _database.Get(id);
-            return model != null ? View(model) : View("NotFound");
+            if (model == null) return View("NotFound");
+            return model.Status != StatusType.Requested ? View("NotValid") : View(model);
         }
 
         [HttpPost]
