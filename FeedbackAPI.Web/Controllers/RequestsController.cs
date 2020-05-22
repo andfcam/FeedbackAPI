@@ -31,9 +31,20 @@ namespace FeedbackAPI.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Index(FormCollection form)
+        public ActionResult CreateRequest()
         {
-            var request = CreateRequest();
+            var plainText = ReadFromFile("~/App_Data/sample.json");
+            var jsonObject = new JsonRequestData(plainText);
+
+            var request = new Request
+            {
+                RequesterId = jsonObject.RequesterId,
+                Action = jsonObject.Action,
+                SiteId = jsonObject.SiteId,
+                Date = DateTime.Now,
+                Status = StatusType.Requested,
+                Data = plainText
+            };
             _database.Add(request);
             return RedirectToAction("Index");
         }
@@ -83,22 +94,6 @@ namespace FeedbackAPI.Web.Controllers
             {
                 return streamReader.ReadToEnd();
             }
-        }
-
-        private Request CreateRequest()
-        {
-            var plainText = ReadFromFile("~/App_Data/sample.json");
-            var jsonObject = new JsonRequestData(plainText);
-
-            return new Request
-            {
-                RequesterId = jsonObject.RequesterId,
-                Action = jsonObject.Action,
-                SiteId = jsonObject.SiteId,
-                Date = DateTime.Now,
-                Status = StatusType.Requested,
-                Data = plainText
-            };
         }
     }
 }
