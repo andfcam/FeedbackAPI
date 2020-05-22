@@ -16,9 +16,10 @@ namespace FeedbackAPI.Data.Models
 
         public ActionType Action { get; set; }
 
-        [DisplayName("Site")]
+        [DisplayName("Site ID")]
         public int SiteId { get; set; }
 
+        [DisplayName("Received on")]
         public DateTime Date { get; set; }
 
         public StatusType Status { get; set; }
