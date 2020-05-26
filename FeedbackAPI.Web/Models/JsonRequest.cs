@@ -8,6 +8,8 @@ namespace FeedbackAPI.Web.Models
 
         public ActionType Action { get; set; }
 
+        public DomainType Domain { get; set; }
+
         public int SiteId { get; set; }
     }
 }

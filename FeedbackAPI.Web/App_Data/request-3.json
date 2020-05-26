@@ -1,0 +1,19 @@
+{
+  "request": {
+    "requesterid": "11182",
+    "action": "update",
+    "domain": "site" 
+  },
+  "site": {
+    "id": "1004823",
+    "contacts": {
+      "title": null,
+      "forename": null,
+      "surname": null,
+      "designation": null,
+      "email": "updateemail@site1.com",
+      "telephone": null,
+      "website": null
+    }
+  }
+}

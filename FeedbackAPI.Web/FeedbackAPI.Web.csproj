@@ -179,9 +179,10 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="App_Data\sample.json">
-      <SubType>Component</SubType>
-    </Content>
+    <Content Include="App_Data\request-1.json" />
+    <Content Include="App_Data\request-2.json" />
+    <Content Include="App_Data\request-3.json" />
+    <Content Include="App_Data\request-4.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

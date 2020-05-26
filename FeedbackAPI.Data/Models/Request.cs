@@ -13,6 +13,8 @@ namespace FeedbackAPI.Data.Models
 
         public ActionType Action { get; set; }
 
+        public DomainType Domain { get; set; }
+
         [DisplayName("Site ID")]
         public int SiteId { get; set; }
 
