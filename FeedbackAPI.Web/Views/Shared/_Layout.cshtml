@@ -25,11 +25,17 @@
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <footer>
-        </footer>
-    </div>
+<div class="container body-content">
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["Message"]
+        </div>
+    }
+    @RenderBody()
+    <footer>
+    </footer>
+</div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

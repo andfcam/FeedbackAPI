@@ -33,6 +33,7 @@ namespace FeedbackAPI.Web.Controllers
         {
             var request = JsonRequestService.FetchRequest();
             _database.Add(request);
+            TempData["Message"] = "A new request has been created.";
             return RedirectToAction("Index");
         }
 
@@ -56,6 +57,7 @@ namespace FeedbackAPI.Web.Controllers
         public ActionResult Accept(int id, FormCollection form)
         {
             _database.Accept(id);
+            TempData["Message"] = $"Request #{id} has been accepted.";
             return RedirectToAction("Index");
         }
 
@@ -72,6 +74,7 @@ namespace FeedbackAPI.Web.Controllers
         public ActionResult Reject(int id, FormCollection form)
         {
             _database.Reject(id);
+            TempData["Message"] = $"Request #{id} has been rejected.";
             return RedirectToAction("Index");
         }
     }
