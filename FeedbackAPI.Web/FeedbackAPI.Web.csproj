@@ -167,7 +167,7 @@
     <Compile Include="Models\CreateSiteRequest.cs" />
     <Compile Include="Models\DisabilityInfo.cs" />
     <Compile Include="Models\FilteredStatusRequests.cs" />
-    <Compile Include="Models\JsonRequest.cs" />
+    <Compile Include="Models\RequestInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\JsonRequestService.cs" />
   </ItemGroup>

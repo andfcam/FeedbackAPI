@@ -9,7 +9,7 @@
     padding-right: 15px;
 }
 
-td {
+td:last-child {
     text-align: right;
 }
 
