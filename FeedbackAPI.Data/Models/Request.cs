@@ -24,6 +24,8 @@ namespace FeedbackAPI.Data.Models
 
         public StatusType Status { get; set; }
 
+        public dynamic Model { get; set; }
+
         public string Data { get; set; }
     }
 }

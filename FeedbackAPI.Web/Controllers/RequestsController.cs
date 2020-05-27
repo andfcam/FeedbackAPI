@@ -31,7 +31,7 @@ namespace FeedbackAPI.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateRequest()
         {
-            var request = JsonRequestService.FetchRequest();
+            var request = JsonRequestService.Fetch();
             _database.Add(request);
             TempData["Message"] = "A new request has been created.";
             return RedirectToAction("Index");

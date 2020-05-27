@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Web;
 using FeedbackAPI.Data.Models;
@@ -9,16 +11,26 @@ namespace FeedbackAPI.Web.Services
 {
     public static class JsonRequestService 
     {
-        public static Request FetchRequest()
+        public static Request Fetch()
         {
-            var rawData = SimulateRequest();
-            var requestInfo = ConvertToObject(rawData, typeof(RequestInfo));
-            ParseJson(rawData, requestInfo); // var obj = 
+            var data = ReceiveData();
+            var model = Deserialise(data);
 
-            return NewRequest(requestInfo, rawData);
+            // perform validation here
+
+            return new Request
+            {
+                RequesterId = model.Request.RequesterId,
+                Action = model.Request.Action,
+                Domain = model.Request.Domain,
+                SiteId = model.Site.Id,
+                Date = DateTime.Now,
+                Status = StatusType.Requested,
+                Data = data
+            };
         }
 
-        private static string SimulateRequest()
+        private static string ReceiveData()
         {
             var variant = new Random().Next(1, 4);
             return ReadFromFile($"~/App_Data/request-{variant}.json");
@@ -32,33 +44,56 @@ namespace FeedbackAPI.Web.Services
             }
         }
 
-        private static void ParseJson(string rawData, RequestInfo requestInfo)
+        private static dynamic Deserialise(string data)
         {
-            var name = $"{requestInfo.Request.Action}{requestInfo.Request.Domain}Request";
-            var type = Type.GetType($"FeedbackAPI.Web.Models.{name}");
+            var requestInfo = JsonConvert.DeserializeObject<RequestInfo>(data);
 
-            var obj = ConvertToObject(rawData, type);
-            //var x = "Break here.";
-
-            //return the obj and change void
-        }
-
-        private static Request NewRequest(RequestInfo jsonRequest, string rawData)
-        {
-            return new Request
+            dynamic request;
+            switch (requestInfo.Request.Domain)
             {
-                RequesterId = jsonRequest.Request.RequesterId,
-                Action = jsonRequest.Request.Action,
-                Domain = jsonRequest.Request.Domain,
-                SiteId = RandomiseSiteId(),
-                Date = DateTime.Now,
-                Status = StatusType.Requested,
-                Data = rawData
-            };
+                case DomainType.Site:
+                    request = ParseSiteRequest(data, requestInfo);
+                    break;
+                case DomainType.Facility:
+                    request = ParseFacilityRequest(data, requestInfo);
+                    break;
+                default:
+                    throw new InvalidEnumArgumentException();
+            }
+            return request;
         }
 
-        private static dynamic ConvertToObject(string text, Type type) => JsonConvert.DeserializeObject(text, type);
+        private static SiteRequest ParseSiteRequest(string data, RequestInfo requestInfo)
+        {
+            var siteRequest = JsonConvert.DeserializeObject<SiteRequest>(data);
+            if (requestInfo.Request.Action == ActionType.Create)
+            {
+                siteRequest.Site.Id = GetRandomSiteId();
+                GetRandomFacilityIdsFor(siteRequest.Site.Facilities);
+            }
+            return siteRequest;
+        }
 
-        private static int RandomiseSiteId() => new Random().Next(1000000, 1100000);
+        private static FacilityRequest ParseFacilityRequest(string data, RequestInfo requestInfo)
+        {
+            var facilityRequest = JsonConvert.DeserializeObject<FacilityRequest>(data);
+            if (requestInfo.Request.Action == ActionType.Create)
+            {
+                GetRandomFacilityIdsFor(facilityRequest.Facilities);
+            }
+            return facilityRequest;
+        }
+
+        private static int GetRandomSiteId() => new Random().Next(1000000, 1200000);
+
+        private static void GetRandomFacilityIdsFor(IEnumerable<FacilityRequest.Facility> facilities)
+        {
+            foreach (var facility in facilities)
+            {
+                facility.Id = GetRandomFacilityId();
+            }
+        }
+
+        private static int GetRandomFacilityId() => new Random().Next(2000000, 2200000);
     }
 }

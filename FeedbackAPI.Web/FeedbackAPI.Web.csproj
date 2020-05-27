@@ -163,9 +163,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CreateFacilityRequest.cs" />
-    <Compile Include="Models\CreateSiteRequest.cs" />
+    <Compile Include="Models\FacilityRequest.cs" />
+    <Compile Include="Models\SiteGroups.cs" />
+    <Compile Include="Models\SiteRequest.cs" />
     <Compile Include="Models\DisabilityInfo.cs" />
+    <Compile Include="Models\FacilityGroups.cs" />
     <Compile Include="Models\FilteredStatusRequests.cs" />
     <Compile Include="Models\RequestInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

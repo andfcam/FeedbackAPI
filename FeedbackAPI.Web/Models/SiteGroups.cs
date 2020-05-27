@@ -2,25 +2,8 @@
 
 namespace FeedbackAPI.Web.Models
 {
-    public class CreateSiteRequest
+    public class SiteGroups
     {
-        public SiteInfo Site;
-
-        public class SiteInfo
-        {
-            public int Id;
-            [Required] public string Name;
-            [Required] public AddressInfo Address;
-            [Required] public ContactsInfo Contacts;
-            [Required] public ManagementInfo Management;
-            [Required] public AmenitiesInfo Amenities;
-            [Required] public EquipmentInfo Equipment;
-            [Required] public DisabilityInfo Disability;
-            [Required] public Activity[] Activities;
-            [Required] public string[] Aliases;
-            [Required] public CreateFacilityRequest[] Facilities;
-        }
-
         public class AddressInfo
         {
             public string SubBuildingName;

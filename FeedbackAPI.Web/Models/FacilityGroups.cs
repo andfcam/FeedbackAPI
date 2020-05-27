@@ -2,15 +2,8 @@
 
 namespace FeedbackAPI.Web.Models
 {
-    public class CreateFacilityRequest
+    public class FacilityGroups
     {
-        public int Id;
-        [Required] public TypeInfo Type;
-        [Required] public ManagementInfo Management;
-        [Required] public BuildHistoryInfo BuildHistory;
-        [Required] public DisabilityInfo Disability;
-        [Required] public OpeningTimesInfo OpeningTimes;
-
         public class TypeInfo
         {
             [Required] public int FacilityType;
@@ -39,6 +32,13 @@ namespace FeedbackAPI.Web.Models
             [Required] public bool HasChangingRooms;
             [Required] public bool AreChangingRoomsRefurbished;
             public string YearChangingRoomsRefurbished;
+        }
+
+        public class FacilitySpecificsInfo
+        {
+            public int Floodlit;
+            public int Overmarked;
+            public int Pitches;
         }
 
         public class OpeningTimesInfo

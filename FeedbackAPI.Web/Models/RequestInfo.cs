@@ -5,10 +5,10 @@ namespace FeedbackAPI.Web.Models
 {
     public class RequestInfo
     {
-        public Details Request;
+        public RequestDetails Request;
     }
 
-    public class Details
+    public class RequestDetails
     {
         [Required] public int RequesterId;
         [Required] public ActionType Action;
