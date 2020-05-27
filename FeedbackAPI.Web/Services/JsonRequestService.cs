@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Web;
+using System.Web.Configuration;
 using FeedbackAPI.Data.Models;
 using FeedbackAPI.Web.Models;
 using Newtonsoft.Json;
@@ -9,13 +10,10 @@ namespace FeedbackAPI.Web.Services
 {
     public static class JsonRequestService 
     {
-        private static dynamic _json;
-
         public static Request FetchRequest()
         {
             var rawData = SimulateRequest();
-            _json = ConvertToJson(rawData);
-            var jsonRequest = ParseJson();
+            var jsonRequest = ParseJson(rawData);
 
             return NewRequest(jsonRequest, rawData);
         }
@@ -40,14 +38,23 @@ namespace FeedbackAPI.Web.Services
             };
         }
 
-        private static JsonRequest ParseJson()
+        private static JsonRequest ParseJson(string rawData)
         {
+            var json = ConvertToObject(Type.GetType("dynamic"), rawData);
+            var action = ParseAction(json);
+            var domain = ParseDomain(json);
+
+            var type = Type.GetType($"FeedbackAPI.Web.Models.{action}{domain}Request"); // should be working
+
+            // can build type with $"{action}{domain}Request" and pass to JsonConvert.DeserializeObject<typeVariable>(rawData)
+
+            // becomes redundant - return createRequest or updateRequest in switch statement
             return new JsonRequest()
             {
-                RequesterId = ParseRequesterId(),
-                Action = ParseAction(),
-                Domain = ParseDomain(),
-                SiteId = ParseSiteId()
+                Action = ParseAction(json),
+                Domain = ParseDomain(json),
+                RequesterId = ParseRequesterId(json),
+                SiteId = ParseSiteId(json)
             };
         }
 
@@ -55,15 +62,15 @@ namespace FeedbackAPI.Web.Services
 
         private static int ParseDynamicInt(dynamic property) => int.Parse(property.ToString());
 
-        private static int ParseRequesterId() => ParseDynamicInt(_json.request.requesterid);
+        private static int ParseRequesterId(dynamic json) => ParseDynamicInt(json.request.requesterid);
 
-        private static int ParseSiteId() => _json.site.id != null ? ParseDynamicInt(_json.site.id) : RandomiseSiteId();
+        private static int ParseSiteId(dynamic json) => json.site.id != null ? ParseDynamicInt(json.site.id) : RandomiseSiteId();
 
-        private static ActionType ParseAction() => (ActionType) Enum.Parse(typeof(ActionType), _json.request.action.ToString(), true);
+        private static ActionType ParseAction(dynamic json) => (ActionType) Enum.Parse(typeof(ActionType), json.request.action.ToString(), true);
 
-        private static DomainType ParseDomain() => (DomainType) Enum.Parse(typeof(DomainType), _json.request.domain.ToString(), true);
+        private static DomainType ParseDomain(dynamic json) => (DomainType) Enum.Parse(typeof(DomainType), json.request.domain.ToString(), true);
 
-        private static dynamic ConvertToJson(string text) => JsonConvert.DeserializeObject<dynamic>(text);
+        private static dynamic ConvertToObject(Type type, string text) => JsonConvert.DeserializeObject<dynamic>(text);
 
         private static string ReadFromFile(string path)
         {
