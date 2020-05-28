@@ -3,7 +3,7 @@ using FeedbackAPI.Data.Models;
 
 namespace FeedbackAPI.Web.Models
 {
-    public class FilteredStatusRequests
+    public class StatusRequests
     {
         public IEnumerable<Request> Requested { get; set; }
 

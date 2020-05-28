@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\ActionType.cs" />
+    <Compile Include="Models\DomainType.cs" />
     <Compile Include="Models\Request.cs" />
     <Compile Include="Models\StatusType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

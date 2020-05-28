@@ -13,6 +13,8 @@ namespace FeedbackAPI.Data.Models
 
         public ActionType Action { get; set; }
 
+        public DomainType Domain { get; set; }
+
         [DisplayName("Site ID")]
         public int SiteId { get; set; }
 
@@ -21,6 +23,8 @@ namespace FeedbackAPI.Data.Models
         public DateTime Date { get; set; }
 
         public StatusType Status { get; set; }
+
+        public dynamic Model { get; set; }
 
         public string Data { get; set; }
     }

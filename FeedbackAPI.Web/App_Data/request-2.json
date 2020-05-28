@@ -1,0 +1,78 @@
+{
+  "request": {
+    "requesterid": "11089",
+    "action": "create",
+    "domain": "facility" 
+  },
+  "site": {
+    "id": "1191745"
+  },
+  "facilities": [
+    {
+      "type": {
+        "facilityType": 5,
+        "facilitySubType": 5020
+      },
+      "management": {
+        "managementType": 1,
+        "status": 3,
+        "statusNotes": null,
+        "closureDate": null,
+        "closureCode": null,
+        "closureReason": null,
+        "closureNotes": null,
+        "comments": []
+      },
+      "buildHistory": {
+        "openingDate": null,
+        "yearBuilt": null,
+        "yearBuiltEstimated": false,
+        "isRefurbished": true,
+        "yearRefurbished": 2000,
+        "hasChangingRooms": true,
+        "areChangingRoomsRefurbished": true,
+        "yearChangingRoomsRefurbished": 2000
+      },
+      "disability": {
+        "access": true,
+        "notes": null,
+        "equipped": {
+          "parking": true,
+          "findingReachingEntrance": true,
+          "receptionArea": true,
+          "doorways": true,
+          "changingFacilities": false,
+          "activityAreas": true,
+          "toilets": true,
+          "socialAreas": false,
+          "spectatorAreas": false,
+          "emergencyExits": true
+        },
+        "changingPlacesToiletsExist": 0
+      },
+      "facilitySpecifics": {
+        "floodlit": 0,
+        "overmarked": 0,
+        "pitches": 1
+      },
+      "openingTimes": {
+        "seasonalityType": 1,
+        "seasonalityStart": null,
+        "seasonalityEnd": null,
+        "timingsType": 2,
+        "accessibility": 5,
+        "openingTimes": [
+          {
+            "accessDescription": 5,
+            "openingTime": null,
+            "“09": "00”",
+            "closingTime": null,
+            "“16": "00”",
+            "periodOpenFor": 11
+          }
+        ]
+      }
+    }
+  ]
+
+}					

@@ -1,7 +1,8 @@
 {
     "request": {
-        "requesterid": "12345",
-        "action": "create"
+        "requesterid": "12433",
+        "action": "create",
+        "domain": "site"
     },
     "site": {
         "name": "NEW SUPER SITE",

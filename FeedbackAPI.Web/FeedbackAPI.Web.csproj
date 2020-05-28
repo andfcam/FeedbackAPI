@@ -163,10 +163,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\FilteredStatusRequests.cs" />
-    <Compile Include="Models\JsonRequest.cs" />
+    <Compile Include="Models\FacilityRequest.cs" />
+    <Compile Include="Models\SiteGroups.cs" />
+    <Compile Include="Models\SiteRequest.cs" />
+    <Compile Include="Models\DisabilityInfo.cs" />
+    <Compile Include="Models\FacilityGroups.cs" />
+    <Compile Include="Models\StatusRequests.cs" />
+    <Compile Include="Models\RequestInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\JsonRequestService.cs" />
+    <Compile Include="Services\FilterRequestsService.cs" />
+    <Compile Include="Services\ParseJsonService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -179,9 +185,10 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="App_Data\sample.json">
-      <SubType>Component</SubType>
-    </Content>
+    <Content Include="App_Data\request-1.json" />
+    <Content Include="App_Data\request-2.json" />
+    <Content Include="App_Data\request-3.json" />
+    <Content Include="App_Data\request-4.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

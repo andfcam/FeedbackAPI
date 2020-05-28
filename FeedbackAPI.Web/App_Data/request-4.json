@@ -1,0 +1,18 @@
+{
+  "request": {
+    "requesterid": "10372",
+    "action": "update",
+    "domain": "facility" 
+  },
+  "site": {
+    "id": "1017701"
+  },
+  "facilities": [
+    {
+      "id": "336699",
+      "facilitySpecifics": {
+        "pitches": 2
+      }
+    }
+  ]
+}
