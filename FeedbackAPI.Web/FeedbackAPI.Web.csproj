@@ -189,6 +189,8 @@
     <Content Include="App_Data\request-2.json" />
     <Content Include="App_Data\request-3.json" />
     <Content Include="App_Data\request-4.json" />
+    <Content Include="App_Data\request-5.json" />
+    <Content Include="App_Data\request-6.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
