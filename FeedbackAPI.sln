@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedbackAPI.Web", "Feedback
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedbackAPI.Data", "FeedbackAPI.Data\FeedbackAPI.Data.csproj", "{179B33EC-3F33-4939-B6C0-276ABEE72502}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedbackAPI.Specs", "FeedbackAPI.Specs\FeedbackAPI.Specs.csproj", "{0C78DBA4-B9A2-436A-BF08-E43E21023655}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{179B33EC-3F33-4939-B6C0-276ABEE72502}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{179B33EC-3F33-4939-B6C0-276ABEE72502}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{179B33EC-3F33-4939-B6C0-276ABEE72502}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C78DBA4-B9A2-436A-BF08-E43E21023655}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C78DBA4-B9A2-436A-BF08-E43E21023655}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C78DBA4-B9A2-436A-BF08-E43E21023655}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C78DBA4-B9A2-436A-BF08-E43E21023655}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

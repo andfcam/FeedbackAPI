@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Web;
 using FeedbackAPI.Data.Models;
 using FeedbackAPI.Web.Models;
@@ -11,32 +12,15 @@ namespace FeedbackAPI.Web.Services
 {
     public static class ParseJsonService 
     {
-        public static Request Fetch()
+        public static Request Simulate()
         {
-            var data = ReceiveData();
+            var data = Fetch();
             var model = Deserialise(data);
-
-            // perform validation here
-
-            return new Request
-            {
-                RequesterId = model.Request.RequesterId,
-                Action = model.Request.Action,
-                Domain = model.Request.Domain,
-                SiteId = model.Site.Id,
-                Date = DateTime.Now,
-                Status = StatusType.Requested,
-                Data = data
-            };
+            var status = Validate(model);
+            return Parse(model, data, status);
         }
 
-        private static string ReceiveData()
-        {
-            var variant = new Random().Next(1, 4);
-            return ReadFromFile($"~/App_Data/request-{variant}.json");
-        }
-
-        private static string ReadFromFile(string path)
+        public static string ReadFromFile(string path)
         {
             using (var streamReader = new StreamReader(HttpContext.Current.Server.MapPath(path)))
             {
@@ -44,23 +28,60 @@ namespace FeedbackAPI.Web.Services
             }
         }
 
-        private static dynamic Deserialise(string data)
+        public static dynamic Deserialise(string data)
         {
             var requestInfo = JsonConvert.DeserializeObject<RequestInfo>(data);
 
-            dynamic request;
+            dynamic model;
             switch (requestInfo.Request.Domain)
             {
                 case DomainType.Site:
-                    request = ParseSiteRequest(data, requestInfo);
+                    model = ParseSiteRequest(data, requestInfo);
                     break;
                 case DomainType.Facility:
-                    request = ParseFacilityRequest(data, requestInfo);
+                    model = ParseFacilityRequest(data, requestInfo);
                     break;
                 default:
                     throw new InvalidEnumArgumentException();
             }
-            return request;
+            return model;
+        }
+
+        public static StatusType Validate(dynamic model)
+        {
+            FacilityRequest.Facility[] facilities = (model.GetType() == typeof(SiteRequest)) ? model.Site.Facilities : model.Facilities;
+            if (model.Site.Id == 0)
+            {
+                return StatusType.Rejected;
+            }
+            else if (facilities != null)
+            {
+                if (facilities.Any(facility => facility.Id == 0))
+                {
+                    return StatusType.Rejected;
+                }
+            }
+            return StatusType.Requested;
+        }
+
+        public static Request Parse(dynamic model, string data, StatusType status)
+        {
+            return new Request
+            {
+                RequesterId = model.Request.RequesterId,
+                Action = model.Request.Action,
+                Domain = model.Request.Domain,
+                SiteId = model.Site.Id,
+                Date = DateTime.Now,
+                Status = status,
+                Data = data
+            };
+        }
+
+        private static string Fetch()
+        {
+            var variant = new Random().Next(1, 4);
+            return ReadFromFile($"~/App_Data/request-{variant}.json");
         }
 
         private static SiteRequest ParseSiteRequest(string data, RequestInfo requestInfo)
