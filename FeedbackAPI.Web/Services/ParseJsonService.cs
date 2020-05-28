@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace FeedbackAPI.Web.Services
 {
-    public static class JsonRequestService 
+    public static class ParseJsonService 
     {
         public static Request Fetch()
         {

@@ -1,9 +1,11 @@
-﻿@model IEnumerable<FeedbackAPI.Data.Models.Request>
+﻿@model FeedbackAPI.Web.Models.StatusRequests
 @{
     ViewBag.Title = "Home";
+    var count = Model.Accepted.Count() + Model.Rejected.Count() + Model.Requested.Count();
 }
 
-<h2>Exciting Dashboard</h2>
+<h2>APDPAPIP Dashboard</h2>
 
-<p>There are currently @Model.Count() requests in the database.</p>
+<p>There are currently @count requests in the database.</p>
 
+<p>@Model.Requested.Count() requests require action.</p>

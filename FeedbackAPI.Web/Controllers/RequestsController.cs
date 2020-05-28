@@ -16,9 +16,9 @@ namespace FeedbackAPI.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(string query)
         {
-            var model = new FilteredStatusRequests
+            var model = new StatusRequests
             {
                 Requested = _database.GetByStatus(StatusType.Requested),
                 Accepted = _database.GetByStatus(StatusType.Accepted),
@@ -31,7 +31,7 @@ namespace FeedbackAPI.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult CreateRequest()
         {
-            var request = JsonRequestService.Fetch();
+            var request = ParseJsonService.Fetch();
             _database.Add(request);
             TempData["Message"] = "A new request has been created.";
             return RedirectToAction("Index");

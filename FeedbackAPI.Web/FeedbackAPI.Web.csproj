@@ -168,10 +168,11 @@
     <Compile Include="Models\SiteRequest.cs" />
     <Compile Include="Models\DisabilityInfo.cs" />
     <Compile Include="Models\FacilityGroups.cs" />
-    <Compile Include="Models\FilteredStatusRequests.cs" />
+    <Compile Include="Models\StatusRequests.cs" />
     <Compile Include="Models\RequestInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\JsonRequestService.cs" />
+    <Compile Include="Services\FilterRequestsService.cs" />
+    <Compile Include="Services\ParseJsonService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
